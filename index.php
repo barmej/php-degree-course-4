@@ -23,6 +23,37 @@
 </head>
 <body>
     <?php
+        include_once './classes/robot.class.php';
+        $faheem = new Robot(
+            "فهيم",
+            "متخصص في كل شيء",
+            "faheem.png",
+            array("ماهو اثقل حيوان؟","من أفضل روبوت؟"),
+            array("الفيل","فهيم بلا منازع!")
+        );
+
+        $sportsman= new Robot("رياضي","متخصص في العلوم الرياضية","sportsman.png",
+            array("كم عدد لاعبين فريق كره السله الاساسيين؟"),
+            array("5"));
+
+        $programmer=new Robot("مبرمج","متخصص في البرمجه","coder.png",
+            array("ما هي الداله؟"),
+            array("لا اعلم"));
+            
+        $chemist=new Robot("كيميائي","متخصص في العلوم علوم الكيمياء","chemist.png",
+            array("مما يتكون الهواء الذي نتنفس منه؟"),
+            array("اكسجين و نيتروجين و كربون"));
+
+        $programmer2=new Robot("مبرمج","متخصص في البرمجه","coder.png",
+            array("ما هي الداله؟"),
+            array("لا اعلم"));
+            
+        $chemist2=new Robot("كيميائي","متخصص في العلوم علوم الكيمياء","chemist.png",
+            array("مما يتكون الهواء الذي نتنفس منه؟"),
+            array("اكسجين و نيتروجين و كربون"));
+
+        $robots = [$faheem,$sportsman, $programmer, $chemist, $programmer2, $chemist2];
+
         $isLoggedIn = false;
     ?>
 
@@ -63,38 +94,17 @@
                         <th>المجموعه الأولى</th>
                         <th>المجموعه الثانيه</th>
                     </tr>
-                    <tr>
+                    <?php for($i=0; $i < sizeof($robots) ; $i++) { ?>
+                        <?php if($i%2 == 0) echo "<tr>"; ?>
                         <td>
-                            <img src="assets/images/faheem.png" width="100px" />
+                            <img src=<?php echo "assets/images/".$robots[$i]->image ?> width="100px" />
                             <ul>
-                                <li>فهيم</li>
-                                <li>متخصص في كل شيء</li>
+                                <li><?php echo $robots[$i]->name ?></li>
+                                <li><?php echo $robots[$i]->spec ?></li>
                             </ul>
                         </td>
-                        <td>
-                            <img src="assets/images/sportsman.png" width="100px" />
-                            <ul>
-                                <li>رياضي</li>
-                                <li>متخصص في الرياضة</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="assets/images/coder.png" width="100px" />
-                            <ul>
-                                <li>مبرمج</li>
-                                <li>متخصص في البرمجه</li>
-                            </ul>
-                        </td>
-                        <td>
-                            <img src="assets/images/chemist.png" width="100px" />
-                            <ul>
-                                <li>كميائي</li>
-                                <li>متخصص في علوم الكيمياء</li>
-                            </ul>
-                        </td>
-                    </tr>
+                        <?php if($i%2 == 1) echo "</tr>"; ?>
+                    <?php } ?>
                 </table>
             </div>
             <div class="col-sm-4 text-direction">
