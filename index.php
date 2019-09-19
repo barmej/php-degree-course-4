@@ -17,20 +17,14 @@
         
     </style>
 
-    <script>
-
-        $(document).ready(function(){
-            $("td").click(function(){
-                console.log("clicked");
-            });
-        })
-        
-    </script>
 
     <script src="assets/js/scripts.js" ></script>
 
 </head>
 <body>
+    <?php
+        echo "روبوتاتي";
+    ?>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
