@@ -23,7 +23,7 @@
 </head>
 <body>
     <?php
-        echo "روبوتاتي";
+        $isLoggedIn = false;
     ?>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -98,6 +98,7 @@
                 </table>
             </div>
             <div class="col-sm-4 text-direction">
+                <?php if(!$isLoggedIn){ ?>
                 <form>
                     <div class="form-group">
                         <label for="exampleInputEmail1">البريد الالكتروني</label>
@@ -110,6 +111,7 @@
                     </div>
                     <input type="submit" class="btn btn-outline-warning btn-sm btn-block" value="دخول" />
                 </form>
+                <?php }else{ echo " مرحبا بك مجددا "; } ?>
             </div>
         </div>
     </div>
