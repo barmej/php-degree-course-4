@@ -25,33 +25,28 @@
 
 <body class="d-flex flex-column h-100">
 
-    <?php 
-        include_once "./robotInit.php";
-        include_once "./layouts/header.php";
-    ?>
+
+    <?php
+    include_once "./robotInit.php";
+    include_once "./layouts/header.php"; ?>
 
     <main>
 
         <div class="container">
             <div class="row">
                 <div class="col-sm-8">
-                    <table class="table table-dark text-center shadow">
-                        <tr class="bg-warning">
-                            <th>المجموعه الأولى</th>
-                            <th>المجموعه الثانيه</th>
-                        </tr>
-                        <?php for ($i = 0; $i < sizeof($robots); $i++) { ?>
-                            <?php if ($i % 2 == 0) echo "<tr>"; ?>
-                            <td>
-                                <img src=<?php echo "assets/images/" . $robots[$i]->image ?> width="100px" />
-                                <ul>
-                                    <li><?php echo $robots[$i]->name ?></li>
-                                    <li><?php echo $robots[$i]->spec ?></li>
-                                </ul>
-                            </td>
-                            <?php if ($i % 2 == 1) echo "</tr>"; ?>
-                        <?php } ?>
-                    </table>
+                    <div class="card bg-dark  text-center ">
+                        <img src=<?= "./assets/images/{$robot->image}"; ?> class="card-img-top w-25 mx-auto" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $robot->name ?></h5>
+                            <p class="card-text">
+                                <?php foreach ($robot->questions as $question) {
+                                    echo $question;
+                                } ?>
+                            </p>
+                            <a href="#" class="btn btn-primary">إسألني</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-4 text-direction">
                     <?php include_once "./layouts/sidebar.php"; ?>
