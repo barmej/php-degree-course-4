@@ -34,6 +34,10 @@
 
     $robots = [$faheem, $sportsman, $programmer, $chemist];
 
-    $robot = $robots[2];
+    if(isset($_GET["robot"])){
+        $robot=$robots[$_GET["robot"]];
+    }else{
+        $robot = $robots[2];
+    }
  
 ?>

@@ -47,7 +47,8 @@
                                 <ul>
                                     <li><?php echo $robots[$i]->name ?></li>
                                     <li><?php echo $robots[$i]->spec ?></li>
-                                </ul>
+                                </ul> 
+                                <a class="btn btn-outline-warning" href="details.php?robot=<?= $i ?>" >فحص</a>
                             </td>
                             <?php if ($i % 2 == 1) echo "</tr>"; ?>
                         <?php } ?>
