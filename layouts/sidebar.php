@@ -4,6 +4,7 @@
     if( isset($_POST["email"] )){
         if($_POST["email"] == "php@barmej.com" && $_POST["password"] == "php"){
             $message = "تعرفنا عليك انت مستر بي اتش بي";
+            $isLoggedIn=true;
         }else{
             $message = "المعلومات خاطئه";
         }
@@ -26,6 +27,6 @@
         </div>
         <input type="submit" class="btn btn-outline-warning btn-sm btn-block" value="دخول" />
     </form>
-<?php } else {
-    echo " مرحبا بك مجددا ";
-} ?>
+<?php } else { ?>
+    <a class="btn btn-outline-warning btn-block" href="./">خروج</a> 
+<?php } ?>
