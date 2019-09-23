@@ -35,7 +35,5 @@
     $robots = [$faheem, $sportsman, $programmer, $chemist];
 
     $robot = $robots[2];
-
-    $isLoggedIn = false;
  
 ?>

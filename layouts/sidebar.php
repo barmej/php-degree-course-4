@@ -1,5 +1,20 @@
-<?php if (!$isLoggedIn) { ?>
-    <form>
+<?php
+    $isLoggedIn = false;
+
+    if( isset($_POST["email"] )){
+        if($_POST["email"] == "php@barmej.com" && $_POST["password"] == "php"){
+            $message = "تعرفنا عليك انت مستر بي اتش بي";
+        }else{
+            $message = "المعلومات خاطئه";
+        }
+    }
+
+    if( isset($message) )
+        echo $message;
+    
+
+    if (!$isLoggedIn) { ?>
+    <form method="POST" action="index.php">
         <div class="form-group">
             <label for="exampleInputEmail1">البريد الالكتروني</label>
             <input name="email" type="email" class="form-control text-direction" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="أدخل البريد">
