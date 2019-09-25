@@ -1,4 +1,5 @@
 <?php
+include_once "./classes/robot.class.php";
 
 class Db{
     public $conn;
@@ -28,7 +29,7 @@ class Db{
         }else{
             $results=array();
             while( $row = $result->fetch_array(MYSQLI_ASSOC) ){
-                $results[] = $row;
+                $results[] = new Robot($row["name"],$row["spec"],$row["image"],$row["questions"],$row["answers"]);
             }
             return $results;
         }
