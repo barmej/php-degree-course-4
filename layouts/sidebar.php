@@ -2,16 +2,15 @@
     $isLoggedIn = false;
 
     if( isset($_POST["email"] )){
-        if($_POST["email"] == "php@barmej.com" && $_POST["password"] == "php"){
-            $message = "تعرفنا عليك انت مستر بي اتش بي";
+        $result = $db->login($_POST["email"],$_POST["password"]);
+
+        if($result){
+            $message=$result;
             $isLoggedIn=true;
         }else{
-            $message = "المعلومات خاطئه";
+            echo "المعلومات خاطئة";
         }
     }
-
-    if( isset($message) )
-        echo $message;
     
 
     if (!$isLoggedIn) { ?>
@@ -28,5 +27,6 @@
         <input type="submit" class="btn btn-outline-warning btn-sm btn-block" value="دخول" />
     </form>
 <?php } else { ?>
+    <?php echo "مرحبا بك ".$message["username"] ?>
     <a class="btn btn-outline-warning btn-block" href="./">خروج</a> 
 <?php } ?>

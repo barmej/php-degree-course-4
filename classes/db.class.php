@@ -28,11 +28,25 @@ class Db{
         }else{
             $results=array();
             while( $row = $result->fetch_array(MYSQLI_ASSOC) ){
-                $result[] = $row;
+                $results[] = $row;
             }
             return $results;
         }
 
+    }
+
+    function login($email,$password){
+        $stmt = $this->conn->prepare("SELECT username,email FROM users WHERE email=? AND password=?");
+        $stmt->bind_param("ss",$email,$password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if($result->num_rows == 0){
+            return false;
+        }
+
+        return $result->fetch_array(MYSQLI_ASSOC);
+        
     }
     
 }
