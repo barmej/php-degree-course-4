@@ -22,11 +22,17 @@ class Db{
         $stmt = $this->conn->prepare("SELECT * FROM robots"); // تجهيز الامر
         $stmt->execute(); //تنفيذ الامر
         $result = $stmt->get_result(); // استخراج النتائج
-
-        while( $row = $result->fetch_array(MYSQLI_ASSOC) ){
-            echo $row["name"];
-            echo "<br>";
+        
+        if($result->num_rows == 0){
+            return false;
+        }else{
+            $results=array();
+            while( $row = $result->fetch_array(MYSQLI_ASSOC) ){
+                $result[] = $row;
+            }
+            return $results;
         }
+
     }
     
 }
