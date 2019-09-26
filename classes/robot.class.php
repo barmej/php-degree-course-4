@@ -1,18 +1,34 @@
 <?php
 
 class Robot{
+    public $id;
     public $name;
     public $spec;
     public $image;
     public $questions;
     public $answers;
 
-    function __construct($name, $spec, $image, $questions, $answers){
+    function __construct($id,$name, $spec, $image, $questions, $answers){
+        $this->id=$id;
         $this->name=$name;
         $this->spec=$spec;
         $this->image=$image;
         $this->questions=$questions;
         $this->answers=$answers;
+    }
+
+    function addQuestion($question,$answer){
+        if(!isset($this->questions)){
+            $this->questions=array();
+        }
+
+        if (!isset($this->answers)) {
+            $this->answers = array();
+        }
+
+        $this->questions[] = $question;
+        $this->answers[] = $answer;
+
     }
 
     function __toString(){

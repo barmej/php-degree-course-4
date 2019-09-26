@@ -34,12 +34,12 @@
 
     // $robots = [$faheem, $sportsman, $programmer, $chemist];
 
-    // if(isset($_GET["robot"])){
-    //     $robot=$robots[$_GET["robot"]];
-    // }else{
-    //     $robot = $robots[2];
-    // }
-
+    
     $robots = $db->allRobots();
- 
+    
+    if(isset($_GET["robot"])){
+        $robot=$robots[$_GET["robot"]];
+    }else{
+        $robot = $robots[2];
+    }
 ?>

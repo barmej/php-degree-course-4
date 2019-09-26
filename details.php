@@ -27,9 +27,15 @@
 
 
     <?php
-        include_once "./layouts/header.php";
-        include_once "./robotInit.php";
-     ?>
+    include_once "./layouts/header.php";
+    include_once "./robotInit.php";
+
+    if(isset($_POST["question"])){
+        $robot->addQuestion($_POST["question"],$_POST["answer"]);
+        $db->updateRobot($robot);
+    }
+
+    ?>
 
     <main>
 
@@ -43,9 +49,24 @@
                             <p class="card-text">
                                 <?php foreach ($robot->questions as $question) {
                                     echo $question;
+                                    echo "<br>";
                                 } ?>
                             </p>
-                            <a href="#" class="btn btn-primary">إسألني</a>
+                            <div class="w-50 mx-auto">
+                                <form method="POST" action="details.php?robot=<?= $_GET["robot"] ?>">
+                                    <div class="form-group">
+                                        <label for="question">أضف سؤالك</label>
+                                        <input name="question" type="text" class="form-control text-direction" id="question" aria-describedby="questionHelp" placeholder="أدخل السؤال">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="answer">أضف جوابك</label>
+                                        <input name="answer" type="text" class="form-control text-direction" id="answer" aria-describedby="answerHelp" placeholder="أدخل جوابك">
+                                    </div>
+                                    <input type="submit" class="btn btn-outline-warning btn-sm btn-block" value="إضافه سؤال" />
+                                </form>
+                            </div>
+                            <!-- <a href="#" class="btn btn-primary">إسألني</a> -->
                         </div>
                     </div>
                 </div>
