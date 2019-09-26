@@ -56,8 +56,21 @@ class Db{
         $encodedQuestions = json_encode($robot->questions);
         $encodedAnswers = json_encode($robot->answers);
         $stmt->bind_param("ssssss",$robot->name,$robot->spec,$robot->image,$encodedQuestions,$encodedAnswers,$robot->id);
-        $stmt->execute();
-        return true;
+        
+        return $stmt->execute();
+    }
+
+    function createRobot($robot){
+        $stmt = $this->conn->prepare("INSERT INTO robots 
+            (`id`,`name`,`spec`,`image`,`questions`,`answers`) VALUES (NULL,?,?,?,?,?)");
+
+        $encodedQuestions = json_encode($robot->questions);
+        $encodedAnswers = json_encode($robot->answers);
+
+        $stmt->bind_param("sssss", $robot->name, $robot->spec, $robot->image, $encodedQuestions, $encodedAnswers);
+        
+        return $stmt->execute();
+        
     }
     
 }

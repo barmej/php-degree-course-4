@@ -26,8 +26,8 @@
 <body class="d-flex flex-column h-100">
 
     <?php
-    include_once "./robotInit.php";
-    include_once "./layouts/header.php";
+        include_once "./layouts/header.php";
+        include_once "./robotInit.php";
     ?>
 
     <main>

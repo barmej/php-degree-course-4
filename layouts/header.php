@@ -28,7 +28,7 @@ $db->allRobots();
                         أضف روبوتك
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">روبوت عام</a>
+                        <a class="dropdown-item" href="./createRobot.php">روبوت عام</a>
                         <a class="dropdown-item" href="#">روبوت متخصص</a>
                     </div>
                 </li>
