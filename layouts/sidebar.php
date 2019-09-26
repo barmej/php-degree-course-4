@@ -13,7 +13,7 @@
     }
     
 
-    if (!$isLoggedIn) { ?>
+    if (!isset($_SESSION["user"])) { ?>
     <form method="POST" action="index.php">
         <div class="form-group">
             <label for="exampleInputEmail1">البريد الالكتروني</label>
@@ -27,6 +27,6 @@
         <input type="submit" class="btn btn-outline-warning btn-sm btn-block" value="دخول" />
     </form>
 <?php } else { ?>
-    <?php echo "مرحبا بك ".$message["username"] ?>
+    <?php echo "مرحبا بك ". $_SESSION["user"] ?>
     <a class="btn btn-outline-warning btn-block" href="./">خروج</a> 
 <?php } ?>

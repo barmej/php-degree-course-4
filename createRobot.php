@@ -1,4 +1,4 @@
-<?php sessions_start() ?>
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 
@@ -87,32 +87,36 @@
                 <div class="col-sm-8">
                     <div class="card bg-dark  text-center ">
                         <div class="card-body">
-                            <h5 class="card-title">نموذج إضافه الروبوت</h5>
-                            <p><?php echo isset($message) ? $message : "" ?></p>
-                            <p class="card-text">
-                                يرجى تعبأه بيانات روبوتك الجديد
-                            </p>
-                            <div class="w-50 mx-auto">
-                                <form method="POST" action="createRobot.php" enctype="multipart/form-data">
-                                    <div class="form-group">
-                                        <label for="name">إسم الروبوت</label>
-                                        <input name="name" type="text" class="form-control text-direction" id="name" aria-describedby="nameHelp" placeholder="الإسم">
+                            <?php if(isset($_SESSION["user"])){ ?>
+                                <h5 class="card-title">نموذج إضافه الروبوت</h5>
+                                <p><?php echo isset($message) ? $message : "" ?></p>
+                                <p class="card-text">
+                                    يرجى تعبأه بيانات روبوتك الجديد
+                                </p>
+                                <div class="w-50 mx-auto">
+                                    <form method="POST" action="createRobot.php" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label for="name">إسم الروبوت</label>
+                                            <input name="name" type="text" class="form-control text-direction" id="name" aria-describedby="nameHelp" placeholder="الإسم">
 
-                                        <label for="spec">التخصص</label>
-                                        <input name="spec" type="text" class="form-control text-direction" id="spec" aria-describedby="specHelp" placeholder="التخصص">
+                                            <label for="spec">التخصص</label>
+                                            <input name="spec" type="text" class="form-control text-direction" id="spec" aria-describedby="specHelp" placeholder="التخصص">
 
-                                        <label for="image">الصوره</label>
-                                        <input name="image" type="file" class="form-control-file" id="image">
+                                            <label for="image">الصوره</label>
+                                            <input name="image" type="file" class="form-control-file" id="image">
 
-                                        <label for="questions">الأساله</label>
-                                        <input name="questions" type="text" class="form-control text-direction" id="questions" aria-describedby="questionsHelp" placeholder="الأساله">
+                                            <label for="questions">الأساله</label>
+                                            <input name="questions" type="text" class="form-control text-direction" id="questions" aria-describedby="questionsHelp" placeholder="الأساله">
 
-                                        <label for="answers">الأجوبه</label>
-                                        <input name="answers" type="text" class="form-control text-direction" id="answers" aria-describedby="answersHelp" placeholder="الأجوبه">
-                                    </div>
-                                    <input type="submit" class="btn btn-outline-warning btn-sm btn-block" value="إضافه روبوت" />
-                                </form>
-                            </div>
+                                            <label for="answers">الأجوبه</label>
+                                            <input name="answers" type="text" class="form-control text-direction" id="answers" aria-describedby="answersHelp" placeholder="الأجوبه">
+                                        </div>
+                                        <input type="submit" class="btn btn-outline-warning btn-sm btn-block" value="إضافه روبوت" />
+                                    </form>
+                                </div>
+                            <?php }else{  ?>
+                                يجب عليك تسجيل الدخول قبل التمكن من اضافه روبوتات جديده
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
