@@ -28,5 +28,5 @@
     </form>
 <?php } else { ?>
     <?php echo "مرحبا بك ". $_SESSION["user"] ?>
-    <a class="btn btn-outline-warning btn-block" href="./">خروج</a> 
+    <a class="btn btn-outline-warning btn-block" href="./logout.php">خروج</a> 
 <?php } ?>
