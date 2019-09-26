@@ -1,3 +1,4 @@
+<?php sessions_start() ?>
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 
@@ -30,8 +31,8 @@
     include_once "./layouts/header.php";
     include_once "./robotInit.php";
 
-    if(isset($_POST["question"])){
-        $robot->addQuestion($_POST["question"],$_POST["answer"]);
+    if (isset($_POST["question"])) {
+        $robot->addQuestion($_POST["question"], $_POST["answer"]);
         $db->updateRobot($robot);
     }
 

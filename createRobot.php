@@ -1,3 +1,4 @@
+<?php sessions_start() ?>
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 
@@ -26,56 +27,57 @@
 <body class="d-flex flex-column h-100">
 
     <?php
-        include_once "./layouts/header.php";
-        include_once "./robotInit.php";
+    include_once "./layouts/header.php";
+    include_once "./robotInit.php";
 
-        if(isset($_POST["name"])){
-            $target_dir = "assets/images/";
-            $target_file = $target_dir.basename($_FILES["image"]["name"]); '/tmp/test/greatrobot.png';
-            $uploadOk = 1;
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-            $check = getimagesize($_FILES["image"]["tmp_name"]);
+    if (isset($_POST["name"])) {
+        $target_dir = "assets/images/";
+        $target_file = $target_dir . basename($_FILES["image"]["name"]);
+        '/tmp/test/greatrobot.png';
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $check = getimagesize($_FILES["image"]["tmp_name"]);
 
-            if($check !== false){
+        if ($check !== false) {
 
-                //التاكد من وجود الملف مسبقا
-                if(file_exists('assets/images/'.$_FILES["image"]["name"])){
-                    $message = "نأسف الملف موجود مسبقا";
-                    $uploadOk = 0;
-                }
-
-                //فحص حجم الملف
-                if($_FILES["image"]["size"] > 500000){
-                    $message = "يرجى منك رفع ملف بحجم اقل من 500 كيلوبايت";
-                    $uploadOk = 0;
-                }
-
-                //فحص صيغه الملف
-                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif"){
-                    $message = "نأسف صيغه الملف المرفوع غير مدعومة";
-                    $uploadOk = 0;
-                }
-                
-                if($uploadOk != 0){
-                    if(move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)){
-                        $image = $_FILES["image"]["name"];
-                        
-                        $questions = [$_POST["questions"]];
-                        $answers = [ $_POST["answers"] ];
-
-                        $robot = new Robot(null,$_POST["name"],$_POST["spec"],$image, $questions, $answers);
-                        $db->createRobot($robot);
-
-                        $message = "لقد تمت عمليه رفع الملف";
-                    } else{
-                        $uploadOk = 0;
-                        $message ="نأسف حصل خطب ما, يرجى المحاوله مره اخرى";
-                    }
-                }
-            }else{
-                $message = "الملف المرفوع ليس بصوره";
+            //التاكد من وجود الملف مسبقا
+            if (file_exists('assets/images/' . $_FILES["image"]["name"])) {
+                $message = "نأسف الملف موجود مسبقا";
+                $uploadOk = 0;
             }
+
+            //فحص حجم الملف
+            if ($_FILES["image"]["size"] > 500000) {
+                $message = "يرجى منك رفع ملف بحجم اقل من 500 كيلوبايت";
+                $uploadOk = 0;
+            }
+
+            //فحص صيغه الملف
+            if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+                $message = "نأسف صيغه الملف المرفوع غير مدعومة";
+                $uploadOk = 0;
+            }
+
+            if ($uploadOk != 0) {
+                if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                    $image = $_FILES["image"]["name"];
+
+                    $questions = [$_POST["questions"]];
+                    $answers = [$_POST["answers"]];
+
+                    $robot = new Robot(null, $_POST["name"], $_POST["spec"], $image, $questions, $answers);
+                    $db->createRobot($robot);
+
+                    $message = "لقد تمت عمليه رفع الملف";
+                } else {
+                    $uploadOk = 0;
+                    $message = "نأسف حصل خطب ما, يرجى المحاوله مره اخرى";
+                }
+            }
+        } else {
+            $message = "الملف المرفوع ليس بصوره";
         }
+    }
     ?>
 
     <main>

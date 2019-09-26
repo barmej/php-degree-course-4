@@ -1,3 +1,4 @@
+<?php sessions_start() ?>
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 
@@ -26,8 +27,8 @@
 <body class="d-flex flex-column h-100">
 
     <?php
-        include_once "./layouts/header.php";
-        include_once "./robotInit.php";
+    include_once "./layouts/header.php";
+    include_once "./robotInit.php";
     ?>
 
     <main>
@@ -35,7 +36,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-8">
-                    
+
                 </div>
                 <div class="col-sm-4 text-direction">
                     <?php include_once "./layouts/sidebar.php"; ?>
