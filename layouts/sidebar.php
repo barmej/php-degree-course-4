@@ -1,12 +1,12 @@
 <?php
-    $isLoggedIn = false;
 
     if( isset($_POST["email"] )){
         $result = $db->login($_POST["email"],$_POST["password"]);
 
         if($result){
             $message=$result;
-            $isLoggedIn=true;
+
+            $_SESSION["user"]=$message["username"];
         }else{
             echo "المعلومات خاطئة";
         }
