@@ -1,4 +1,7 @@
-<?php session_start() ?>
+<?php 
+session_start();
+setcookie("robot",$_GET["robot"],time() + (86400*30), "/");
+?>
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 

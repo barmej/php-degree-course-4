@@ -12,6 +12,12 @@
         }
     }
     
+    if(isset($_COOKIE["robot"])){
+        $cookieRobotIndex=$_COOKIE["robot"];
+        $cookieRobot=$robots[$cookieRobotIndex];
+        echo "في المره الماضيه زرت الروبوت ".$cookieRobot->name;
+        echo "<br>";
+    }
 
     if (!isset($_SESSION["user"])) { ?>
     <form method="POST" action="index.php">
